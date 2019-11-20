@@ -1,4 +1,4 @@
-var dur=0;
+var dur = [];
 inlets = 1;
 outlets =4;
 
@@ -13,7 +13,7 @@ function bang()
 
 function duration(v)
 {
-	dur = v;
+	dur = arrayfromargs(arguments);
 }
 
 
@@ -24,7 +24,7 @@ function input() {
 	var i;
 	for (i = 0; i < my_list.length; i++) {
 		outlet(0, [duration, my_list[i]]);
-		duration = duration + dur;
+		duration = duration + dur[i];
 	};
 }
 
@@ -38,7 +38,7 @@ function invert()
 		var distFromFirst = my_list[i] - my_list[0];
 		my_inv_list[i] = my_list[i] - 2*distFromFirst;
 		outlet(1, [duration, my_inv_list[i]]);
-		duration = duration + dur;	
+		duration = duration + dur[i];	
 	};
 	return my_inv_list;
 }
@@ -54,7 +54,7 @@ function retrograde()
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
 		post(duration,my_ret_list[i]);
 		outlet(2, [duration, my_ret_list[i]]);
-		duration = duration + dur;
+		duration = duration + dur[i];
 	};
 	return my_ret_list;
 }
@@ -75,7 +75,7 @@ function retroversion() {
 		var distFromFirst = my_ret_list[i] - my_ret_list[0];
 		my_retvert[i] = my_ret_list[i] - 2*distFromFirst;
 		outlet(3, [duration, my_retvert[i]]);
-		duration = duration + dur;	
+		duration = duration + dur[i];	
 	};
 
 }
