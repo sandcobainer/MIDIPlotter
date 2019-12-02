@@ -354,7 +354,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 347.5, 933.334414286613423, 272.522522389888763, 22.0 ],
+					"patching_rect" : [ 72.136209785938263, 775.676756722927053, 272.522522389888763, 22.0 ],
 					"text" : "68. 509.276325 66. 495.116197 65. 495.116197"
 				}
 
@@ -1151,7 +1151,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 844.630630373954773, 817.045044898986816, 50.0, 22.0 ],
+					"patching_rect" : [ 444.672343500049578, 759.261261522769928, 50.0, 22.0 ],
 					"text" : "compile"
 				}
 
@@ -1163,7 +1163,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 837.436936676502228, 830.432432651519775, 77.0, 22.0 ],
+					"patching_rect" : [ 346.658732175827026, 775.676756722927053, 77.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "lineinput.js",
 						"parameter_enable" : 0
