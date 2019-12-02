@@ -7,15 +7,12 @@ if (jsarguments.length>1)
 
 
 function list() {
-	var my_list = arrayfromargs(arguments);
+	var graph_list = arrayfromargs(arguments);
 	var duration = 0;
 	var i;
-	for (i = 0; i < my_list.length; i++) {
-		if (i%2 ==0) {
-			my_list[i] = noteToFreq(my_list[i])
-		}
+	for (i = 0; i < graph_list.length; i = i+2 ) {
+		outlet(0,[ graph_list[i], graph_list[i+1]] )
 	}
-	outlet(0,my_list);
 }
 
 function noteToFreq(note) {

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 var dur= [];
+=======
+var dur = [];
+>>>>>>> 8d1551a5871c0bcc4382ccda03221692d5545e8f
 inlets = 1;
 outlets = 4;
 
@@ -37,7 +41,11 @@ function invert()
 	for (i = 0; i < my_list.length; i++) {
 		var distFromFirst = my_list[i] - my_list[0];
 		my_inv_list[i] = my_list[i] - 2*distFromFirst;
+<<<<<<< HEAD
 		outlet(0, [duration, my_inv_list[i]]);
+=======
+		outlet(1, [duration, my_inv_list[i]]);
+>>>>>>> 8d1551a5871c0bcc4382ccda03221692d5545e8f
 		duration = duration + dur[i];	
 	};
 	post('inverted: ',my_inv_list);
@@ -54,7 +62,12 @@ function retrograde()
 	outlet(0, 'clear');
 	for (i = 0; i < my_list.length; i++) {
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
+<<<<<<< HEAD
 		outlet(0, [duration, my_ret_list[i]]);
+=======
+		post(duration,my_ret_list[i]);
+		outlet(2, [duration, my_ret_list[i]]);
+>>>>>>> 8d1551a5871c0bcc4382ccda03221692d5545e8f
 		duration = duration + dur[i];
 	};
 	post('retrograded: ',my_ret_list);
@@ -77,7 +90,11 @@ function retroversion() {
 	for (i = 0; i < my_ret_list.length; i++) {
 		var distFromFirst = my_ret_list[i] - my_ret_list[0];
 		my_retvert[i] = my_ret_list[i] - 2*distFromFirst;
+<<<<<<< HEAD
 		outlet(0, [duration, my_retvert[i]]);
+=======
+		outlet(3, [duration, my_retvert[i]]);
+>>>>>>> 8d1551a5871c0bcc4382ccda03221692d5545e8f
 		duration = duration + dur[i];	
 	};
 	post('retroversed: ',my_retvert);
