@@ -1,4 +1,8 @@
 function linear_transform()
+/*
+This function takes in a list of the x-y coordinates of MIDI file and the values a, b, c, and d and outputs transformed x-y coordinates. 
+Effectively, this function allows us to transform the inputs-output pairs of any function without needing to know the actual function. 
+To work properly, the input list to the function must have at least one coordinate pair (x,y) followed by the values of a, b, c, and d. */
 {
 	var my_list = arrayfromargs(arguments);
 	var d = my_list.pop();
