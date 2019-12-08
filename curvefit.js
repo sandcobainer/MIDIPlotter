@@ -188,33 +188,31 @@ This function takes in a list of the x-y coordinates of MIDI file and the values
 Effectively, this function allows us to transform the inputs-output pairs of any function without needing to know the actual function. 
 To work properly, the input list to the function must have at least one coordinate pair (x,y) followed by the values of a, b, c, and d. */
 {
+	outlet(0, 'clear');
 	var duration = 0;
-	
-	var my_list = glob.my_list;
+	var my_list = arrayfromargs(arguments);
 	var d = my_list.pop();
-	var c = my_list.pop();
-	var b = my_list.pop();
 	var a = my_list.pop();
+	var list_min = min(my_list)
 	var my_transformed_list = new Array(my_list.length);
+	var reduced_list = new Array(my_list.length);
 	var i;
-	
-	for (i=0; i < my_list.length; i++) {
+	post('my list:');
+	post(my_list + "\n");
+	for (i=0; i<my_list.length; i++) {
+		reduced_list[i] = my_list[i] - list_min;
 		
-		if (i < my_list.length/2)  {
-		my_transformed_list[i] = (my_list[i]/b)-c	
-		}
-	};
-	
-	for (i=my_list.length/2; i<my_list.length; i++) {
-		
-		my_transformed_list[i] = a*my_list[i]+d;
+		my_transformed_list[i] = a*reduced_list[i]+d + list_min;
+		outlet(0, [duration, my_transformed_list[i]]);
+		duration = duration + dur[i];
 	};	
 	
 	myval = my_transformed_list;
-	post(dur, my_transformed_list);
-	bang();
- 	post("\n");
+	//post('transformed list');
+	//post(my_transformed_list);
+ 	//post("\n");
 }
+
 ​
 function min(my_list)
 {
