@@ -29,6 +29,7 @@ function input() {
 	outlet(2, duration);
 	outlet(4, glob.my_list);
 	outlet(5, dur);
+
 }
 
 function invert() 
@@ -49,13 +50,12 @@ function invert()
 	post('inverted: ', my_inv_list);
 	outlet(4, my_inv_list);
 	outlet(5, dur);
-	return my_inv_list;
 }
 
 function retrograde() 
 {
 	var duration = 0;
-	var durList = [];
+	var durList =[];
 	var my_list = glob.my_list;
 	post('-----------------------');
 	post('original : ', my_list);
@@ -67,17 +67,16 @@ function retrograde()
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
 		outlet(0, [duration, my_ret_list[i]]);
 		durList.push(dur[(my_list.length-1)-i]);
-		duration = duration + durList[i];
+		duration = duration + dur[i];
 	};
 	post('retrograded: ',my_ret_list);
 	outlet(4, my_ret_list);
 	outlet(5, durList);
-	return my_ret_list;
 }
 
 function retroversion() {
 	var duration = 0;
-	var durList = [];
+	var durList=[];
 	var my_list = glob.my_list;
 	post('-----------------------');
 	post('original : ', my_list);
@@ -86,7 +85,6 @@ function retroversion() {
 	var i;
 	for (i = 0; i < my_list.length; i++) {
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
-		durList.push(dur[(my_list.length-1)-i]);
 	};
 	
 	var my_retvert = new Array(my_ret_list.length);
@@ -95,11 +93,13 @@ function retroversion() {
 		var distFromFirst = my_ret_list[i] - my_ret_list[0];
 		my_retvert[i] = my_ret_list[i] - 2*distFromFirst;
 		outlet(0, [duration, my_retvert[i]]);
+		durList.push(dur[(my_list.length-1)-i]);
 		duration = duration + dur[i];	
 	};
+	post('retroversed: ',my_retvert);	
 	outlet(4, my_retvert);
 	outlet(5, durList);
-	post('retroversed: ',my_retvert);	
+
 }
 
 function transpose_down()
@@ -115,10 +115,11 @@ function transpose_down()
 		my_transdown_list[i] = my_list[i] - 1;
 		outlet(0, [duration, my_transdown_list[i]]);
 		duration = duration + dur[i];
-	}
+	}		
+	post('transposed down: ', my_transdown_list);
 	outlet(4, my_transdown_list);
 	outlet(5, dur);
-	post('transposed down: ', my_transdown_list);
+
 }
 ​
 function transpose_up()
@@ -135,10 +136,10 @@ function transpose_up()
 		
 		outlet(0, [duration, my_transup_list[i]]);
 		duration = duration + dur[i];
-	};
+	};		
+	post('transposed up :', my_transup_list);
 	outlet(4, my_transup_list);
 	outlet(5, dur);
-	post('transposed up :', my_transup_list);
 }
 	
 function stretch()
