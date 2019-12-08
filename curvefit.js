@@ -1,7 +1,7 @@
 
 var dur = [];
 inlets = 1;
-outlets = 4;
+outlets = 6;
 
 
 if (jsarguments.length>1)
@@ -27,6 +27,8 @@ function input() {
 	post('original : ', glob.my_list);
 	outlet(1, glob.my_list);
 	outlet(2, duration);
+	outlet(4, glob.my_list);
+	outlet(5, dur);
 }
 
 function invert() 
@@ -45,12 +47,15 @@ function invert()
 		duration = duration + dur[i];	
 	};
 	post('inverted: ', my_inv_list);
+	outlet(4, my_inv_list);
+	outlet(5, dur);
 	return my_inv_list;
 }
 
 function retrograde() 
 {
 	var duration = 0;
+	var durList = [];
 	var my_list = glob.my_list;
 	post('-----------------------');
 	post('original : ', my_list);
@@ -61,14 +66,18 @@ function retrograde()
 	for (i = 0; i < my_list.length; i++) {
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
 		outlet(0, [duration, my_ret_list[i]]);
-		duration = duration + dur[i];
+		durList.push(dur[(my_list.length-1)-i]);
+		duration = duration + durList[i];
 	};
 	post('retrograded: ',my_ret_list);
+	outlet(4, my_ret_list);
+	outlet(5, durList);
 	return my_ret_list;
 }
 
 function retroversion() {
 	var duration = 0;
+	var durList = [];
 	var my_list = glob.my_list;
 	post('-----------------------');
 	post('original : ', my_list);
@@ -77,6 +86,7 @@ function retroversion() {
 	var i;
 	for (i = 0; i < my_list.length; i++) {
 		my_ret_list[i] = my_list[(my_list.length-1)-i];
+		durList.push(dur[(my_list.length-1)-i]);
 	};
 	
 	var my_retvert = new Array(my_ret_list.length);
@@ -87,6 +97,8 @@ function retroversion() {
 		outlet(0, [duration, my_retvert[i]]);
 		duration = duration + dur[i];	
 	};
+	outlet(4, my_retvert);
+	outlet(5, durList);
 	post('retroversed: ',my_retvert);	
 }
 
@@ -103,7 +115,9 @@ function transpose_down()
 		my_transdown_list[i] = my_list[i] - 1;
 		outlet(0, [duration, my_transdown_list[i]]);
 		duration = duration + dur[i];
-	}		
+	}
+	outlet(4, my_transdown_list);
+	outlet(5, dur);
 	post('transposed down: ', my_transdown_list);
 }
 ​
@@ -121,7 +135,9 @@ function transpose_up()
 		
 		outlet(0, [duration, my_transup_list[i]]);
 		duration = duration + dur[i];
-	};		
+	};
+	outlet(4, my_transup_list);
+	outlet(5, dur);
 	post('transposed up :', my_transup_list);
 }
 	
