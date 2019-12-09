@@ -208,6 +208,8 @@ To work properly, the input list to the function must have at least one coordina
 	};	
 	
 	myval = my_transformed_list;
+	outlet(4, my_transformed_list);
+	outlet(5, dur);
 	//post('transformed list');
 	//post(my_transformed_list);
  	//post("\n");
